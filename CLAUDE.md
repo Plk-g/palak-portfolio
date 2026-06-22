@@ -8,12 +8,15 @@ depth, taste, and clarity, not just list my work.
 
 ## Design system
 - Background: #0A0A0A (near black)
+- Surface: #1A1A2E (slightly purple-tinted dark, for cards/containers)
 - Text: #E8E6E1 (off-white)
-- Accent: #EF9F27 (warm amber) — use sparingly, for CTAs/highlights only
+- Accent: #7C3AED (electric violet) — CTAs, highlights, hover states
+- Accent light: #C084FC (soft violet) — secondary accents, borders, tags
 - Font: Space Grotesk (Google Fonts, via next/font)
 - Border radius: 12px default, 20px for pills/buttons
-- Dark mode only — no light mode toggle needed
+- Dark mode only
 - Motion should feel premium and intentional, never bouncy/cartoonish
+- Tone: understated confidence, dry wit, specific over dramatic
 
 ## Architecture rules
 - All components go in src/components/
