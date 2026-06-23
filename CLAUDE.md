@@ -2,61 +2,81 @@
 
 ## Who I am
 Palak Gupta — AI Systems Engineer at Symbolic Systems, NYU MS CS '26, 
-based in NYC. Originally from India (VIT '24). This portfolio is itself 
-one of my showcase projects — it should demonstrate creativity, technical 
-depth, taste, and clarity, not just list my work.
+based in NYC. Originally from India (VIT '24). This portfolio is a 
+showcase project itself — it should demonstrate creativity, technical 
+depth, taste, and clarity.
+
+## Design inspiration
+Dash Creative (dashcreative.co) — dark, warm, editorial, serif italic 
+accents, split hero with scrollable side panel, premium feel. NOT a 
+copy — same energy, different content.
 
 ## Design system
-- Background: #0A0A0A (near black)
-- Surface: #1A1A2E (slightly purple-tinted dark, for cards/containers)
-- Text: #E8E6E1 (off-white)
-- Accent: #7C3AED (electric violet) — CTAs, highlights, hover states
-- Accent light: #C084FC (soft violet) — secondary accents, borders, tags
-- Font: Space Grotesk (Google Fonts, via next/font)
-- Border radius: 12px default, 20px for pills/buttons
+- Background: #181618 (warm noir)
+- Surface: #282528 (cards, containers, side panel items)
+- Accent: #C9828A (dusty rose) — italic text, CTAs, hover states, 
+  highlighted pills, active nav
+- Text primary: #F5EFEC (off-white)
+- Text secondary: #E8D5D0 (warm cream, for body text, descriptions)
+- Text muted: rgba(245,239,236,0.35) (subtle labels)
+- Borders: rgba(245,239,236,0.06) (very subtle dividers)
+- Serif font: Cormorant Garamond (Google Fonts, via next/font) — 
+  ONLY for italic accent words in headlines
+- Sans font: Space Grotesk (Google Fonts, via next/font) — everything else
+- Border radius: 8px for cards, 20px for pills
 - Dark mode only
-- Motion should feel premium and intentional, never bouncy/cartoonish
+- Motion: premium, smooth, intentional — never bouncy or cartoonish
 - Tone: understated confidence, dry wit, specific over dramatic
 
-## Architecture rules
-- All components go in src/components/
-- Page sections go in src/components/sections/ (one file per section: Hero.tsx, About.tsx, etc.)
-- Reusable small pieces (buttons, cards) go in src/components/ui/
-- Use Tailwind for layout/spacing/color
-- Use GSAP (with ScrollTrigger) for scroll-driven animations
-- Use Framer Motion for component-level transitions (hover, mount/unmount, drag)
-- Keep components small and single-purpose — split if a file exceeds ~150 lines
-- API routes go in src/app/api/
+## Architecture
+- Multi-page app using Next.js App Router
+- Pages: / (landing), /work, /about, /lab, /connect
+- All components in src/components/
+- Page sections in src/components/sections/
+- Reusable UI in src/components/ui/
+- Page transitions using Framer Motion AnimatePresence
+- GSAP ScrollTrigger for scroll-driven animations
+- Framer Motion for component transitions, hover, mount/unmount
 
-## Sections (build in this order)
-1. Hero — 3D Spline character + name + tagline
-2. Marquee — infinite scroll ticker, personality pills
-3. About — sticky image + scrolling text + work timeline
-4. Projects — large hover-preview cards
-5. Stack — interactive tech visualization
-6. Agent demo — "Watch It Think" agentic AI showcase
-7. Feedback — "Roast or Toast" swipe feedback game
-8. Contact — bold CTA + social links
+## Landing page (/) structure
+- Top nav: "Palak Gupta" on left, "Work · About · Lab · Connect" on right
+- Split layout, full viewport height:
+  - LEFT (flex ~1.3): serif italic headline, subtitle, status line
+  - CENTER: 3D morphing element (CSS for now, Spline later)
+  - RIGHT (fixed ~280px): scrollable side panel with image cards
+- Side panel items each have: small thumbnail image, type label, title, 
+  description, tech tags, arrow. Like Dash Creative's project list.
+- Marquee ticker at the very bottom (reuse existing component, update colors)
+
+## Side panel items (landing page)
+1. Agentic AI System (Featured project) — 6 agents, production deployment
+2. Disinfo Tracker (Featured project) — Kafka, Spark, Sentence-BERT
+3. Watch It Think (Interactive) — live AI agent demo
+4. NYU Tandon MS CS (Education) — graduating 2026
+5. Symbolic Systems (Experience) — current role
+6. Roast or Toast (Fun) — feedback game
 
 ## Content rules
 - NEVER use lorem ipsum or generic placeholder text
-- If real copy isn't provided yet, ask me for it or use clearly-marked 
-  placeholder in MY voice (casual, confident, a little witty) — not generic filler
-- Don't invent project details, metrics, or claims about my background
+- Use placeholder images as colored rectangles with border-radius, 
+  NOT broken img tags
+- Headlines use serif italic on key words: 
+  "Building *intelligent* systems that actually *work*"
+- Copy voice: casual, confident, a little witty — not corporate
 
 ## Package management
-- Free to install any npm package needed to implement a feature
-- Just tell me what you installed and why, after the fact
-- Avoid paid APIs/services unless I've explicitly approved one
+- Free to install any npm package needed
+- Tell me what you installed and why, after the fact
 
 ## DO NOT
-- Add sections not listed above without asking me first
-- Change the color palette or font without asking
-- Use light mode anywhere
-- Add a CMS, database, or backend auth — keep this static/serverless 
-  unless I ask for it specifically
+- Add sections or pages not listed above without asking
+- Change the color palette or fonts without asking
+- Use light backgrounds anywhere
+- Use electric/neon colors — the palette is muted and warm
+- Use lorem ipsum anywhere
+- Add a CMS, database, or auth unless asked
 
 ## Commands
-- `npm run dev` — start local dev server (localhost:3000)
-- `npm run build` — production build (run this before pushing major changes)
-- `npm run lint` — check for lint errors
+- npm run dev — local dev server (localhost:3000)
+- npm run build — production build
+- npm run lint — lint check
