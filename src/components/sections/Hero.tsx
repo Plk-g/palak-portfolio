@@ -4,6 +4,7 @@ import { Suspense, Component, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import SplineHero from "@/components/SplineHero";
 
 class SplineErrorBoundary extends Component<
@@ -29,6 +30,8 @@ const CARDS = [
     subtitle: "Kafka, Spark, Sentence-BERT — real-time narrative detection",
     link: "/work",
     gradient: "from-[#1C1A1C] to-[#2a2230]",
+    image: "/images/landing/disinfo-logo.png",
+    alt: "Disinfo Tracker logo",
   },
   {
     label: "LIFESTYLE",
@@ -36,6 +39,8 @@ const CARDS = [
     subtitle: "Grad school, city life, and too much coffee",
     link: "/about",
     gradient: "from-[#1C1A1C] to-[#2a2528]",
+    image: "/images/landing/nyu-nyc-logo.png",
+    alt: "NYU × NYC logo",
   },
   {
     label: "INTERACTIVE",
@@ -43,6 +48,8 @@ const CARDS = [
     subtitle: "Live AI agent demo — see reasoning in real time",
     link: "/lab",
     gradient: "from-[#1C1A1C] to-[#22202a]",
+    image: "/images/landing/wit-logo.png",
+    alt: "Watch It Think logo",
   },
   {
     label: "LET'S PLAY",
@@ -50,6 +57,8 @@ const CARDS = [
     subtitle: "Rate this portfolio. Be honest. I can take it.",
     link: "/lab",
     gradient: "from-[#1C1A1C] to-[#2a2230]",
+    image: "/images/landing/rot-logo.png",
+    alt: "Roast or Toast logo",
   },
 ];
 
@@ -137,9 +146,15 @@ export default function Hero() {
                   }}
                 >
                   {/* Thumbnail */}
-                  <div
-                    className={`h-12 w-12 shrink-0 rounded-[10px] bg-gradient-to-br ${card.gradient}`}
-                  />
+                  <div className="h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg">
+                    <Image
+                      src={card.image}
+                      alt={card.alt}
+                      width={48}
+                      height={48}
+                      className="rounded-lg object-cover"
+                    />
+                  </div>
 
                   {/* Text */}
                   <div className="min-w-0 flex-1">
