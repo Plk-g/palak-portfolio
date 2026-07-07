@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -66,10 +67,15 @@ export default function AboutHero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
         >
-          <div className="flex aspect-[3/4] w-full max-w-[340px] items-center justify-center rounded-[14px] bg-gradient-to-br from-surface to-[#2a2230] lg:max-w-[380px]">
-            <span className="text-[0.75rem] text-text/20">
-              Palak&apos;s photo — warm, candid
-            </span>
+          <div className="relative aspect-[3/4] w-full max-w-[340px] overflow-hidden rounded-[14px] lg:max-w-[380px]">
+            <Image
+              src="/images/about/palak-cover.jpeg"
+              alt="Palak Gupta"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 380px"
+              priority
+            />
           </div>
         </motion.div>
       </div>

@@ -3,27 +3,29 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+type AspectRatio = "landscape" | "portrait";
+
 interface GalleryItem {
-  height: number;
   title: string;
   subtitle: string;
   tag: string;
   italic?: boolean;
   src: string;
   alt: string;
+  aspect: AspectRatio;
 }
 
 const GALLERY_ITEMS: GalleryItem[] = [
-  { height: 190, title: "Grace Hopper '23", subtitle: "First tech conference. Got hooked.", tag: "conferences", src: "/images/about/ghc.jpeg", alt: "Grace Hopper Conference 2023" },
-  { height: 100, title: "Passport stamps", subtitle: "If there's a window seat, I'm taking it.", tag: "travel", src: "/images/about/travel.jpeg", alt: "Travel adventures" },
-  { height: 140, title: "Where it started", subtitle: "School captain. First taste of leadership.", tag: "the arc", src: "/images/about/school.jpeg", alt: "School days" },
-  { height: 140, title: "Sunday host mode", subtitle: "Cooking for 8 is my love language.", tag: "hosting", src: "/images/about/host.jpeg", alt: "Hosting friends" },
-  { height: 220, title: "NYC chapter", subtitle: "The city earns its rent. Most days.", tag: "life", src: "/images/about/nyc.jpeg", alt: "New York City life" },
-  { height: 100, title: "Game day energy", subtitle: "Opinions? Strong. Volume? Louder.", tag: "sports", src: "/images/about/game.jpeg", alt: "Game day" },
-  { height: 140, title: "VIT days", subtitle: "Built my first app. Broke my first prod server.", tag: "the arc", src: "/images/about/VIT.jpeg", alt: "VIT campus days" },
-  { height: 190, title: "NYU Tech Week", subtitle: "Spoke on agentic AI. Didn't faint.", tag: "conferences", src: "/images/about/nyu.jpeg", alt: "NYU campus and events" },
-  { height: 140, title: "Pixie", subtitle: "The CEO of my apartment.", tag: "family", src: "/images/about/pixie-dog.jpeg", alt: "Pixie the dog" },
-  { height: 100, title: "", subtitle: "", tag: "ask me", italic: true, src: "/images/about/coffee.jpeg", alt: "Coffee moment" },
+  { title: "Grace Hopper '23", subtitle: "First tech conference. Got hooked.", tag: "conferences", src: "/images/about/ghc.jpeg", alt: "Grace Hopper Conference 2023", aspect: "landscape" },
+  { title: "Passport stamps", subtitle: "If there's a window seat, I'm taking it.", tag: "travel", src: "/images/about/travel.jpeg", alt: "Travel adventures", aspect: "landscape" },
+  { title: "Where it started", subtitle: "School captain. First taste of leadership.", tag: "the arc", src: "/images/about/school.jpeg", alt: "School days", aspect: "landscape" },
+  { title: "Sunday host mode", subtitle: "Cooking for 8 is my love language.", tag: "hosting", src: "/images/about/host.jpeg", alt: "Hosting friends", aspect: "landscape" },
+  { title: "NYC chapter", subtitle: "The city earns its rent. Most days.", tag: "life", src: "/images/about/nyc.jpeg", alt: "New York City life", aspect: "portrait" },
+  { title: "Game day energy", subtitle: "Opinions? Strong. Volume? Louder.", tag: "sports", src: "/images/about/game.jpeg", alt: "Game day", aspect: "landscape" },
+  { title: "VIT days", subtitle: "Built my first app. Broke my first prod server.", tag: "the arc", src: "/images/about/VIT.jpeg", alt: "VIT campus days", aspect: "landscape" },
+  { title: "NYU Tech Week", subtitle: "Spoke on agentic AI. Didn't faint.", tag: "conferences", src: "/images/about/nyu.jpeg", alt: "NYU campus and events", aspect: "portrait" },
+  { title: "Pixie", subtitle: "The CEO of my apartment.", tag: "family", src: "/images/about/pixie-dog.jpeg", alt: "Pixie the dog", aspect: "portrait" },
+  { title: "", subtitle: "", tag: "ask me", italic: true, src: "/images/about/coffee.jpeg", alt: "Coffee moment", aspect: "landscape" },
 ];
 
 export default function MasonryGallery() {
@@ -43,17 +45,19 @@ export default function MasonryGallery() {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: i * 0.05 }}
           >
-            <div className="relative w-full overflow-hidden" style={{ height: item.height }}>
+            <div className={`relative w-full overflow-hidden ${
+              item.aspect === "portrait" ? "aspect-[3/4]" : "aspect-[4/3]"
+            }`}>
               <Image
                 src={item.src}
                 alt={item.alt}
                 fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
 
-            <div className="p-3.5">
+            <div className="min-h-[5.5rem] p-5">
               {item.italic ? (
                 <p className="font-serif text-[0.9rem] leading-snug text-accent italic">
                   Behind every great engineer is a few too many cups of coffee.

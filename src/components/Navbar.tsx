@@ -40,11 +40,8 @@ export default function Navbar() {
           scrolled ? "bg-[rgba(10,10,10,0.85)] backdrop-blur-lg" : "bg-transparent"
         }`}
       >
-        <Link href="/" className="flex flex-col">
-          <span className="text-lg font-bold text-text">Palak Gupta</span>
-          <span className="text-[10px] font-medium tracking-widest text-[#C9828A] uppercase">
-            PORTFOLIO
-          </span>
+        <Link href="/" className="font-display text-2xl font-normal tracking-tight text-text">
+          Palak Gupta
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
