@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 
 const ITEMS = [
-  { label: "Reading", title: "The Courage to Be Disliked", sub: "Kishimi & Koga" },
-  { label: "Listening to", title: "Huberman Lab", sub: "+ Lex Fridman on rotation" },
-  { label: "Watching", title: "The Bear", sub: "Season 3. Yes, chef." },
+  { label: "Reading", title: "A Gentleman in Moscow", sub: "Amor Towles" },
+  { label: "Listening to", title: "The Diary of a CEO", sub: "+ Steven Bartlett" },
+  { label: "Watching", title: "The Bear", sub: "Season 1. Yes, chef." },
   { label: "Eating", title: "Dal makhani", sub: "Slow-cooked, no shortcuts" },
 ];
 
