@@ -1,14 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { GraduationCap } from "lucide-react";
 
-const CAREER = [
-  { role: "VIT", period: "2020–2024", sub: "B.Tech CS" },
-  { role: "Teachnook", period: "Intern", sub: "ML" },
-  { role: "SAIL Bhilai", period: "Intern", sub: "SDE" },
-  { role: "Finlatics", period: "Intern", sub: "Data Analyst" },
-  { role: "NYU", period: "2025–2026", sub: "MS CS" },
-  { role: "Symbolic Systems", period: "Dec 2025–", sub: "AI Systems Engineer", current: true },
+interface CareerEntry {
+  role: string;
+  org: string;
+  period: string;
+  type: "education" | "work";
+  current?: boolean;
+}
+
+const CAREER: CareerEntry[] = [
+  { role: "B.Tech Computer Science", org: "VIT", period: "2020–2024", type: "education" },
+  { role: "ML Intern", org: "Teachnook", period: "Intern", type: "work" },
+  { role: "SDE Intern", org: "SAIL Bhilai", period: "Intern", type: "work" },
+  { role: "Data Analyst Intern", org: "Finlatics", period: "Intern", type: "work" },
+  { role: "MS Computer Science", org: "NYU", period: "2025–2026", type: "education" },
+  { role: "AI Systems Engineer", org: "Symbolic Systems", period: "Dec 2025–", type: "work", current: true },
 ];
 
 export default function CareerTimeline() {
@@ -17,7 +26,7 @@ export default function CareerTimeline() {
       <div className="flex items-center gap-0 overflow-x-auto pb-4">
         {CAREER.map((item, i) => (
           <motion.div
-            key={item.role}
+            key={item.org + item.role}
             className="flex shrink-0 items-center"
             initial={{ opacity: 0, x: -8 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -26,21 +35,38 @@ export default function CareerTimeline() {
           >
             <div className="flex flex-col items-center text-center">
               <div
-                className={`h-2 w-2 rounded-full ${
+                className={`flex h-3 w-3 items-center justify-center rounded-full ${
                   item.current
                     ? "bg-accent shadow-[0_0_10px_rgba(206,140,248,0.4)]"
-                    : "bg-text/30"
+                    : item.type === "education"
+                      ? "bg-accent/50"
+                      : "bg-text/30"
                 }`}
-              />
-              <p className={`mt-1.5 text-[0.75rem] font-medium ${item.current ? "text-accent" : "text-text"}`}>
+              >
+                {item.type === "education" && (
+                  <GraduationCap size={7} className="text-bg" />
+                )}
+              </div>
+              <p className={`mt-1.5 text-[0.8rem] leading-tight ${
+                item.current
+                  ? "font-bold text-accent"
+                  : item.type === "education"
+                    ? "font-bold text-text"
+                    : "font-medium text-text"
+              }`}>
                 {item.role}
               </p>
-              <p className="text-[0.6rem] text-text/40">
-                {item.period}
+              <p className={`text-[0.65rem] ${
+                item.type === "education" ? "text-text/50" : "text-text/40"
+              }`}>
+                {item.org}
               </p>
               <p className="text-[0.55rem] text-text/30">
-                {item.sub}
+                {item.period}
               </p>
+              {item.type === "education" && (
+                <div className="mt-1 h-px w-6 bg-accent/30" />
+              )}
             </div>
 
             {i < CAREER.length - 1 && (

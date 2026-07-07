@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface GalleryItem {
   height: number;
@@ -8,18 +9,21 @@ interface GalleryItem {
   subtitle: string;
   tag: string;
   italic?: boolean;
+  src: string;
+  alt: string;
 }
 
 const GALLERY_ITEMS: GalleryItem[] = [
-  { height: 190, title: "Grace Hopper '23", subtitle: "First tech conference. Got hooked.", tag: "conferences" },
-  { height: 100, title: "Passport stamps", subtitle: "If there's a window seat, I'm taking it.", tag: "travel" },
-  { height: 140, title: "Where it started", subtitle: "School captain. First taste of leadership.", tag: "the arc" },
-  { height: 140, title: "Sunday host mode", subtitle: "Cooking for 8 is my love language.", tag: "hosting" },
-  { height: 220, title: "NYC chapter", subtitle: "The city earns its rent. Most days.", tag: "life" },
-  { height: 100, title: "Game day energy", subtitle: "Opinions? Strong. Volume? Louder.", tag: "sports" },
-  { height: 140, title: "VIT days", subtitle: "Built my first app. Broke my first prod server.", tag: "the arc" },
-  { height: 190, title: "NYU Tech Week", subtitle: "Spoke on agentic AI. Didn't faint.", tag: "conferences" },
-  { height: 100, title: "", subtitle: "", tag: "ask me", italic: true },
+  { height: 190, title: "Grace Hopper '23", subtitle: "First tech conference. Got hooked.", tag: "conferences", src: "/images/about/ghc.jpeg", alt: "Grace Hopper Conference 2023" },
+  { height: 100, title: "Passport stamps", subtitle: "If there's a window seat, I'm taking it.", tag: "travel", src: "/images/about/travel.jpeg", alt: "Travel adventures" },
+  { height: 140, title: "Where it started", subtitle: "School captain. First taste of leadership.", tag: "the arc", src: "/images/about/school.jpeg", alt: "School days" },
+  { height: 140, title: "Sunday host mode", subtitle: "Cooking for 8 is my love language.", tag: "hosting", src: "/images/about/host.jpeg", alt: "Hosting friends" },
+  { height: 220, title: "NYC chapter", subtitle: "The city earns its rent. Most days.", tag: "life", src: "/images/about/nyc.jpeg", alt: "New York City life" },
+  { height: 100, title: "Game day energy", subtitle: "Opinions? Strong. Volume? Louder.", tag: "sports", src: "/images/about/game.jpeg", alt: "Game day" },
+  { height: 140, title: "VIT days", subtitle: "Built my first app. Broke my first prod server.", tag: "the arc", src: "/images/about/VIT.jpeg", alt: "VIT campus days" },
+  { height: 190, title: "NYU Tech Week", subtitle: "Spoke on agentic AI. Didn't faint.", tag: "conferences", src: "/images/about/nyu.jpeg", alt: "NYU campus and events" },
+  { height: 140, title: "Pixie", subtitle: "The CEO of my apartment.", tag: "family", src: "/images/about/pixie-dog.jpeg", alt: "Pixie the dog" },
+  { height: 100, title: "", subtitle: "", tag: "ask me", italic: true, src: "/images/about/coffee.jpeg", alt: "Coffee moment" },
 ];
 
 export default function MasonryGallery() {
@@ -39,13 +43,16 @@ export default function MasonryGallery() {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: i * 0.05 }}
           >
-            {/* Image placeholder */}
-            <div
-              className="w-full bg-gradient-to-br from-surface to-[#2a2230]"
-              style={{ height: item.height }}
-            />
+            <div className="relative w-full overflow-hidden" style={{ height: item.height }}>
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+            </div>
 
-            {/* Caption */}
             <div className="p-3.5">
               {item.italic ? (
                 <p className="font-serif text-[0.9rem] leading-snug text-accent italic">

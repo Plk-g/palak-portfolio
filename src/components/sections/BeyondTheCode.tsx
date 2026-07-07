@@ -4,20 +4,20 @@ import { motion } from "framer-motion";
 
 const CARDS = [
   {
-    title: "School Captain",
-    sub: "Led a team of 40 prefects. First real lesson in rallying people behind a shared goal.",
+    title: "🍰 Hates sweets",
+    sub: "With one non-negotiable exception: tiramisu. That one gets a pass every time.",
   },
   {
-    title: "Event Lead — VIT",
-    sub: "Organized tech fests with 2,000+ attendees. Logistics, speakers, sponsors — all of it.",
+    title: "🏸 State-level badminton",
+    sub: "Played at the state championship level. Still unreasonably competitive about it.",
   },
   {
-    title: "Teaching Assistant",
-    sub: "Mentored 30+ students through data structures. Learned more teaching than studying.",
+    title: "🎨 Never stopped creating",
+    sub: "Engineering didn't replace the creative side — it just gave it new tools.",
   },
   {
-    title: "Community Builder",
-    sub: "The person who organizes the group chat, the study session, the dinner after. Every time.",
+    title: "☕ Sunday resets",
+    sub: "A sacred ritual. Coffee, quiet, and a clean slate before the week begins.",
   },
 ];
 
@@ -25,7 +25,7 @@ export default function BeyondTheCode() {
   return (
     <section className="mb-20">
       <p className="mb-8 text-[0.7rem] font-medium tracking-[0.15em] text-accent uppercase">
-        Beyond the code
+        Tiny facts about me
       </p>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">

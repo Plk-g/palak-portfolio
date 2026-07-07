@@ -119,6 +119,18 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
+        {/* Mobile hero image — shown when Spline is hidden */}
+        <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center md:hidden">
+          <Image
+            src="/images/landing/hero-mobile.png"
+            alt="Hero visual"
+            width={400}
+            height={400}
+            className="opacity-60"
+            priority
+          />
+        </div>
+
         {/* Spline 3D — behind left content */}
         <SplineErrorBoundary>
           <Suspense
